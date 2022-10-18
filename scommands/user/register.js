@@ -57,4 +57,15 @@ client.on(Events.InteractionCreate, async interaction => {
 		// Show the modal to the user
 		await interaction.showModal(modal);
 	}
+client.on(Events.InteractionCreate, interaction => {
+    if (!interaction.isModalSubmit()) return;
+    ptero.users.create({
+    username: 'const usernam = interaction.fields.getTextInputValue('2');',
+    email: 'const mail = interaction.fields.getTextInputValue('1');',
+    first_name: 'const fn = interaction.fields.getTextInputValue('3');',
+    last_name: 'const ln = interaction.fields.getTextInputValue('4');',
+    password: 'const pass = interaction.fields.getTextInputValue('5');',
+    root_admin: false
+})
+});
 });
