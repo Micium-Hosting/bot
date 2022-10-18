@@ -1,0 +1,27 @@
+{
+  "name": "pterostats",
+  "version": "v1.5.5",
+  "description": "PteroStats is a bot designed to check Panel, Nodes, and Databases status and post it to your discord server",
+  "license": "Apache-2.0",
+  "repository": "HirziDevs/PteroStats",
+  "homepage": "https://pterostats.hirzidevs.net",
+  "bugs": {
+    "email": "hirzidevs@gmail.com",
+    "url": "https://github.com/HirziDevs/PteroStats"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.1",
+    "discord.js": "12.5.3",
+    "js-yaml": "^4.1.0",
+    "quick.db": "^7.1.3",
+    "wrapdactyl": "^0.0.6"
+  },
+  "engines": {
+    "node": "^12.x"
+  }
+}
