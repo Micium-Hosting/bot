@@ -46,13 +46,13 @@ client.on(Events.InteractionCreate, async interaction => {
         .setRequired(true);
 		// An action row only holds one text input,
 		// so you need one action row per text input.
-		const 1 = new ActionRowBuilder().addComponents(email);
-		const 2 = new ActionRowBuilder().addComponents(username);
-    const 3 = new ActionRowBuilder().addComponents(FirstName);
-    const 4 = new ActionRowBuilder().addComponents(LastName);
-    const 5 = new ActionRowBuilder().addComponents(password);
+		const a = new ActionRowBuilder().addComponents(email);
+		const b = new ActionRowBuilder().addComponents(username);
+    const c = new ActionRowBuilder().addComponents(FirstName);
+    const d = new ActionRowBuilder().addComponents(LastName);
+    const e = new ActionRowBuilder().addComponents(password);
 		// Add inputs to the modal
-		modal.addComponents(1, 2, 3, 4, 5);
+		modal.addComponents(a, b, c, d, e);
 
 		// Show the modal to the user
 		await interaction.showModal(modal);
@@ -60,11 +60,11 @@ client.on(Events.InteractionCreate, async interaction => {
 client.on(Events.InteractionCreate, interaction => {
     if (!interaction.isModalSubmit()) return;
     ptero.users.create({
-    username: 'const usernam = interaction.fields.getTextInputValue('2');',
-    email: 'const mail = interaction.fields.getTextInputValue('1');',
-    first_name: 'const fn = interaction.fields.getTextInputValue('3');',
-    last_name: 'const ln = interaction.fields.getTextInputValue('4');',
-    password: 'const pass = interaction.fields.getTextInputValue('5');',
+    username: 'const usernam = interaction.fields.getTextInputValue('b');',
+    email: 'const mail = interaction.fields.getTextInputValue('a');',
+    first_name: 'const fn = interaction.fields.getTextInputValue('c');',
+    last_name: 'const ln = interaction.fields.getTextInputValue('d');',
+    password: 'const pass = interaction.fields.getTextInputValue('e');',
     root_admin: false
 })
 });
