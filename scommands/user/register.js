@@ -1,5 +1,6 @@
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { Client, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 const ptero = require('wrapdactyl');
+
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -59,12 +60,17 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 client.on(Events.InteractionCreate, interaction => {
     if (!interaction.isModalSubmit()) return;
+    const pass = interaction.fields.getTextInputValue('e')
+const ln = interaction.fields.getTextInputValue('d')
+const fn = interaction.fields.getTextInputValue('c')
+const mail = interaction.fields.getTextInputValue('a')
+const usernam = interaction.fields.getTextInputValue('b')
     ptero.users.create({
-    username: 'const usernam = interaction.fields.getTextInputValue('b');',
-    email: 'const mail = interaction.fields.getTextInputValue('a');',
-    first_name: 'const fn = interaction.fields.getTextInputValue('c');',
-    last_name: 'const ln = interaction.fields.getTextInputValue('d');',
-    password: 'const pass = interaction.fields.getTextInputValue('e');',
+    username: usernam,
+    email: mail,
+    first_name: fn,
+    last_name: ln,
+    password: pass,
     root_admin: false
 })
 });
