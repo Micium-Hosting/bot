@@ -143,3 +143,13 @@ const usernam = interaction.fields.getTextInputValue('b')
 })
 });
 });
+//Slash cmd "handler" (for testing purposes)
+async function main() {
+  const commands = [
+    RegisterCommand,
+  ];
+  try {
+    console.log(chalk.black('Started refreshing application (/) commands.`));
+    await rest.put(Routes.applicationGuildCommands('809445390155120670', '881122521263534111'), {
+      body: commands,
+    });
