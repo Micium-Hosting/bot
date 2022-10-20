@@ -1,9 +1,14 @@
-const { Client, Collection } = require('discord.js')
+const { Client, GatewayIntentBits, Partials, Collection, ModalBuilder, TextInputBuilder, TextInputStyle, SlashCommandBulder } = require('discord.js')
 const fs = require('fs')
-const client = new Client()
+const { Guilds, GuildMembers, GuildMessages } = GatewayIntentBits;
+const { User, Message, GuildMember, ThreadMember } = Partials;
+const client = new Client({
+  intents: [Guilds, GuildMembers, GuildMessages],
+  partials: [User, Message, GuildMember, ThreadMember],
+});
 const yaml = require('js-yaml')
-const chalk = require('chalk')
 const config = yaml.load(fs.readFileSync('./config.yml', 'utf8'))
+const mongoose = require("mongoose")
 client.config = config
 client.config = config;
 client.commands = new Collection(); 
@@ -14,14 +19,9 @@ client.categories = fs.readdirSync("./commands/");
 });
 const wrapdactyl = require('wrapdactyl');
 
-fs.readdir('./events/', (err, files) => {
-    if (err) return console.error(err)
-    files.forEach(file => {
-        const event = require(`./events/${file}`)
-        const eventName = file.split('.')[0]
-        client.on(eventName, event.bind(null, client))
-    })
-})
+//['slashCommand'].forEach((handler) => {
+//  require(`./handlers/${handler}`)(client)
+//});
 
 const ptero = new wrapdactyl({
     url: 'https://dash.micium.cloud',    // Panel url
@@ -60,17 +60,15 @@ client.on('message', async message => {
     if (command) command.run(client, message, args)
   })
 
-if (config.token === 'BOT TOKEN') console.log(chalk.blue('[Micium System] ') + chalk.red('Invalid Token, Check ') + chalk.green('config.yml') + chalk.red(' file to change token'))
-client.login(config.token)
-console.log(chalk.black('=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+='))
-console.log(chalk.red('Name: ') + chalk.cyan('Micium'))
-console.log(chalk.red('Version: ') + chalk.cyan('v1.0'))
-console.log(chalk.red('Bot Status: ') + chalk.cyan('Operational'))
-console.log(chalk.black('=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+='))
-
+if (config.token === 'BOT TOKEN') console.log(('[Micium System] ') + ('Invalid Token, Check ') + ('config.yml') + (' file to change token'))
+client.login(config.token).then(() => mongoose.connect(config.mongo))
+console.log(('=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+='))
+console.log(('Name: ') + ('Micium'))
+console.log(('Version: ') + ('v1.0'))
+console.log(('Bot Status: ') + ('Operational'))
+console.log(('=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+='))
 // Modals
 const {  Events, Client, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
-const ptero = require('wrapdactyl');
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
@@ -153,3 +151,5 @@ async function main() {
     await rest.put(Routes.applicationGuildCommands('809445390155120670', '881122521263534111'), {
       body: commands,
     });
+
+
