@@ -15,43 +15,40 @@ client.on(Events.InteractionCreate, async interaction => {
 		
 		const email = new TextInputBuilder()
 			.setCustomId('email')
-		  
 			.setLabel("What's your email? (please enter a valid email)")
-		   
 			.setStyle(TextInputStyle.Short)
-      .setRequired(true);
+                        .setRequired(true);
 
 		const username = new TextInputBuilder()
 			.setCustomId('username')
 			.setLabel("What's your username?")
-    
 			.setStyle(TextInputStyle.Short)
-    .setRequired(true);
+                        .setRequired(true);
+		
     		const FirstName = new TextInputBuilder()
 			.setCustomId('FirstName')
 			.setLabel("What's your first name?")
-	
 			.setStyle(TextInputStyle.Short)
-        .setRequired(true);
+                        .setRequired(true);
+		
 		const LastName = new TextInputBuilder()
 			.setCustomId('LastName')
 			.setLabel("What's your last name?")
-		   
 			.setStyle(TextInputStyle.Short)
-    .setRequired(true);
+                        .setRequired(true);
+		
     		const password = new TextInputBuilder()
 			.setCustomId('password')
 			.setLabel("What's your password?")
-
 			.setStyle(TextInputStyle.Short)
-        .setRequired(true);
+                        .setRequired(true);
 		
 		
 		const a = new ActionRowBuilder().addComponents(email);
 		const b = new ActionRowBuilder().addComponents(username);
-    const c = new ActionRowBuilder().addComponents(FirstName);
-    const d = new ActionRowBuilder().addComponents(LastName);
-    const e = new ActionRowBuilder().addComponents(password);
+                const c = new ActionRowBuilder().addComponents(FirstName);
+                const d = new ActionRowBuilder().addComponents(LastName);
+                const e = new ActionRowBuilder().addComponents(password);
 		
 		modal.addComponents(a, b, c, d, e);
 
